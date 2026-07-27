@@ -1,4 +1,3 @@
-import '../styles/globals.css';
 import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
