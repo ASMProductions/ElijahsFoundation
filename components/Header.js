@@ -18,10 +18,15 @@ export default function Header() {
             flex-direction: column;
             background: #fff;
             border-bottom: 1px solid #e5e5e5;
-            padding: 20px;
+            padding: 0;
             gap: 0;
           }
-          .nav-link { padding: 12px 0; border-bottom: 1px solid #e5e5e5; }
+          .nav-link { 
+            padding: 16px 20px; 
+            border-bottom: 1px solid #e5e5e5;
+            width: 100%;
+            text-align: left;
+          }
           .nav-link:last-child { border-bottom: none; }
           .menu-toggle { display: block; }
           .header-container { position: relative; }
@@ -35,14 +40,6 @@ export default function Header() {
 
       <header style={styles.header}>
         <div style={styles.headerContainer} className="header-container">
-          <div style={styles.headerLeft}>
-            <Link href="/">
-              <div style={styles.logo}>
-                <div style={styles.logoText}>Elijah's Foundation</div>
-              </div>
-            </Link>
-          </div>
-
           <nav style={styles.navLinks} className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             <Link href="/">
               <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Home</div>
@@ -54,7 +51,7 @@ export default function Header() {
               <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Plans</div>
             </Link>
             <Link href="/login">
-              <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Sign In</div>
+              <button style={styles.signInButton} onClick={() => setMobileMenuOpen(false)}>Sign In</button>
             </Link>
           </nav>
 
@@ -83,29 +80,17 @@ const styles = {
   headerContainer: {
     maxWidth: '1400px',
     margin: '0 auto',
-    padding: '20px 40px',
+    padding: '16px 40px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  headerLeft: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  logo: {
-    cursor: 'pointer',
-  },
-  logoText: {
-    fontSize: '18px',
-    fontWeight: '600',
-    color: '#1a1a1a',
-    letterSpacing: '0.5px',
+    justifyContent: 'flex-end',
   },
   navLinks: {
     display: 'flex',
-    gap: '40px',
+    gap: '24px',
     margin: 0,
     padding: 0,
+    alignItems: 'center',
   },
   navLink: {
     fontSize: '14px',
@@ -114,12 +99,19 @@ const styles = {
     cursor: 'pointer',
     transition: 'color 0.2s ease',
     textDecoration: 'none',
-    paddingBottom: '4px',
-    borderBottom: '2px solid transparent',
+    paddingBottom: '2px',
+    borderBottom: '1px solid transparent',
   },
-  navLinkHover: {
-    color: '#b8860b',
-    borderBottomColor: '#b8860b',
+  signInButton: {
+    padding: '10px 24px',
+    backgroundColor: '#1a1a1a',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    fontSize: '14px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'background-color 0.2s ease',
   },
   menuToggle: {
     display: 'none',
