@@ -1,0 +1,24 @@
+{
+  "name": "elijahs-foundation",
+  "version": "1.0.0",
+  "description": "The First Quran Given to Elijah Muhammad in North America - Scholarly Edition",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@upstash/redis": "^1.25.0",
+    "stripe": "^14.0.0",
+    "nodemailer": "^6.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^14.0.0"
+  }
+}
