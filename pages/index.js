@@ -35,7 +35,7 @@ export default function Home() {
         </p>
         
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/reader">
+          <Link href="/reader/1">
             <button style={{
               padding: '1rem 2rem',
               fontSize: '1rem',
@@ -155,7 +155,7 @@ export default function Home() {
               'No full access'
             ]}
             cta="Get Started"
-            href="/reader"
+            href="/reader/1"
           />
           
           <PlanCard
