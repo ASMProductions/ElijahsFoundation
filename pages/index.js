@@ -150,7 +150,7 @@ export default function Home() {
             price="$0"
             description="View sample pages"
             features={[
-              'First 30 pages',
+              'First 6 pages',
               'Sample images',
               'No full access'
             ]}
@@ -194,7 +194,7 @@ export default function Home() {
           
           <PlanCard
             name="Lifetime Access"
-            price="$99"
+            price="$299"
             period="one-time"
             description="Permanent access"
             features={[
