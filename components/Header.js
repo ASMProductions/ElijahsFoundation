@@ -10,12 +10,14 @@ export default function Header() {
         button { transition: background-color 0.2s ease; }
         button:hover { background-color: #a07b08; }
         
-        @media (max-width: 640px) {
-          .nav-links { display: none; }
+        @media (max-width: 768px) {
+          .nav-links { 
+            display: none !important;
+          }
           .nav-links.open { 
-            display: flex; 
+            display: flex !important;
             position: absolute;
-            top: 60px;
+            top: 64px;
             left: 0;
             right: 0;
             flex-direction: column;
@@ -23,19 +25,37 @@ export default function Header() {
             border-bottom: 1px solid #e5e5e5;
             padding: 16px;
             gap: 12px;
+            z-index: 99;
           }
-          .nav-button { width: 100%; }
-          .menu-toggle { display: block; }
+          .nav-button { 
+            width: 100%;
+            text-align: left;
+          }
+          .menu-toggle { 
+            display: block !important;
+          }
+          .header-container {
+            justify-content: space-between;
+            padding: 12px 16px;
+          }
         }
         
-        @media (min-width: 641px) {
-          .menu-toggle { display: none; }
-          .nav-links { display: flex; }
+        @media (min-width: 769px) {
+          .menu-toggle { 
+            display: none !important;
+          }
+          .nav-links { 
+            display: flex !important;
+          }
+          .header-container {
+            justify-content: flex-end;
+            padding: 16px 40px;
+          }
         }
       `}</style>
 
       <header style={styles.header}>
-        <div style={styles.headerContainer}>
+        <div style={styles.headerContainer} className="header-container">
           <nav style={styles.navLinks} className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             <Link href="/">
               <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Home</button>
@@ -76,10 +96,9 @@ const styles = {
   headerContainer: {
     maxWidth: '1400px',
     margin: '0 auto',
-    padding: '16px 40px',
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
   },
   navLinks: {
     display: 'flex',
@@ -106,5 +125,6 @@ const styles = {
     cursor: 'pointer',
     color: '#1a1a1a',
     padding: '8px',
+    marginLeft: 'auto',
   },
 };
