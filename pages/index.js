@@ -1,318 +1,691 @@
-// pages/index.js
-
+import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Home() {
+  const [hoveredTier, setHoveredTier] = useState(null);
+
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
-      
-      {/* HERO SECTION */}
-      <section style={{
-        textAlign: 'center',
-        padding: '4rem 2rem',
-        borderBottom: '1px solid #e0e0e0',
-        marginBottom: '4rem'
-      }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '1rem', color: '#8b7355' }}>
-          The First Quran Given to Elijah Muhammad
-        </h1>
-        
-        <div style={{
-          background: '#f5f5f5',
-          border: '2px solid #8b7355',
-          borderRadius: '8px',
-          padding: '1rem 2rem',
-          marginBottom: '2rem',
-          display: 'inline-block'
-        }}>
-          <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#8b7355', margin: 0 }}>
-            ✓ Authenticated by Elijah Muhammad's Handwritten Signature
-          </p>
-        </div>
-        
-        <p style={{ fontSize: '1.2rem', color: '#666', maxWidth: '700px', margin: '0 auto 2rem' }}>
-          A scholarly digital edition of the manuscript authenticated by the original custodian's own hand. The opening cover bears his signature and address, establishing direct ownership and custody.
-        </p>
-        
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/reader/1">
-            <button style={{
-              padding: '1rem 2rem',
-              fontSize: '1rem',
-              background: '#8b7355',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}>
-              View the Manuscript (Free Sample)
-            </button>
-          </Link>
+    <>
+      <Head>
+        <title>The First Quran Given to Elijah Muhammad - Scholarly Digital Edition</title>
+        <meta name="description" content="Authenticated manuscript. 144 pages. Elijah Muhammad's handwritten signature. The definitive record of Islam's arrival in North America." />
+      </Head>
+
+      <div style={styles.container}>
+        {/* HERO SECTION */}
+        <section style={styles.hero}>
+          <div style={styles.heroContent}>
+            <h1 style={styles.heroTitle}>The First Quran Given to Elijah Muhammad</h1>
+            <p style={styles.heroSubtitle}>Authenticated by handwritten signature. A scholarly digital edition of a manuscript that shaped the spiritual discipline of a nation.</p>
+            
+            <div style={styles.heroMeta}>
+              <div style={styles.metaItem}>
+                <div style={styles.metaLabel}>Pages</div>
+                <div style={styles.metaValue}>144</div>
+              </div>
+              <div style={styles.metaItem}>
+                <div style={styles.metaLabel}>Authentication</div>
+                <div style={styles.metaValue}>Signature</div>
+              </div>
+              <div style={styles.metaItem}>
+                <div style={styles.metaLabel}>Custody</div>
+                <div style={styles.metaValue}>Documented</div>
+              </div>
+            </div>
+          </div>
+
+          <div style={styles.heroImage}>
+            <img src="/quran-pages/001.jpeg" alt="The First Quran - Opening Cover with Elijah Muhammad's Signature" style={styles.manuscriptImage} />
+            <div style={styles.imageCaption}>Elijah Muhammad's handwritten signature and address, establishing direct ownership and custody of this manuscript.</div>
+          </div>
+        </section>
+
+        {/* AUTHENTICATION BADGE */}
+        <section style={styles.authSection}>
+          <div style={styles.authContent}>
+            <h2 style={styles.authTitle}>✓ Authenticated</h2>
+            <p style={styles.authText}>
+              Not a claim. Not a reproduction. The opening cover bears the <strong>handwritten signature of the Honorable Elijah Muhammad</strong> in his own hand, establishing direct ownership and custody of this Quran. His signature can be compared to other authenticated samples. His address—6116 S. Michigan Ave., Chicago—can be verified against historical records.
+            </p>
+            <p style={styles.authText} style={{marginTop: '16px', fontStyle: 'italic', fontSize: '16px'}}>
+              "This Quran does not require belief. It requires only eyes."
+            </p>
+          </div>
+        </section>
+
+        {/* MANUSCRIPT SPECS */}
+        <section style={styles.specsSection}>
+          <h2 style={styles.sectionTitle}>The Manuscript</h2>
           
+          <div style={styles.specsGrid}>
+            <div style={styles.specCard}>
+              <div style={styles.specLabel}>Binding</div>
+              <div style={styles.specValue}>Red animal skin with fur, hand-bound</div>
+            </div>
+            <div style={styles.specCard}>
+              <div style={styles.specLabel}>Origin</div>
+              <div style={styles.specValue}>Kutub Khana Din Muhammadi, Lahore (~1900-1920s)</div>
+            </div>
+            <div style={styles.specCard}>
+              <div style={styles.specLabel}>Text</div>
+              <div style={styles.specValue}>Arabic with Urdu/Persian tafsir annotations</div>
+            </div>
+            <div style={styles.specCard}>
+              <div style={styles.specLabel}>Dedicatory Inscription</div>
+              <div style={styles.specValue}>Mustapa Milham (Cincinnati) to Elijah Muhammad (Chicago)</div>
+            </div>
+          </div>
+        </section>
+
+        {/* LINEAGE */}
+        <section style={styles.lineageSection}>
+          <h2 style={styles.sectionTitle}>Custodial Lineage</h2>
+          <p style={styles.lineageText}>A direct chain of custody spanning nearly a century:</p>
+          
+          <div style={styles.lineageTimeline}>
+            <div style={styles.timelineItem}>
+              <div style={styles.timelineMarker}>1</div>
+              <div style={styles.timelineContent}>
+                <div style={styles.timelineDate}>Early 1900s</div>
+                <div style={styles.timelineName}>Master Fard Muhammad</div>
+                <div style={styles.timelineDesc}>Gave the Quran to Elijah Muhammad as foundational text of the Nation of Islam</div>
+              </div>
+            </div>
+
+            <div style={styles.timelineItem}>
+              <div style={styles.timelineMarker}>2</div>
+              <div style={styles.timelineContent}>
+                <div style={styles.timelineDate}>1934-1975</div>
+                <div style={styles.timelineName}>The Honorable Elijah Muhammad</div>
+                <div style={styles.timelineDesc}>Carried the Quran to the rostrum. His signature on the opening cover documents ownership and care.</div>
+              </div>
+            </div>
+
+            <div style={styles.timelineItem}>
+              <div style={styles.timelineMarker}>3</div>
+              <div style={styles.timelineContent}>
+                <div style={styles.timelineDate}>1975-2017</div>
+                <div style={styles.timelineName}>Nathaniel Muhammad</div>
+                <div style={styles.timelineDesc}>Eldest son of Elijah Muhammad. Kept both Qurans in his custody for 42 years.</div>
+              </div>
+            </div>
+
+            <div style={styles.timelineItem}>
+              <div style={styles.timelineMarker}>4</div>
+              <div style={styles.timelineContent}>
+                <div style={styles.timelineDate}>2012-Present</div>
+                <div style={styles.timelineName}>Amin Shabazz Muhammad</div>
+                <div style={styles.timelineDesc}>Received the Quran directly from Nathaniel Muhammad in 2012. Custodian and digital steward.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTENT SECTION */}
+        <section style={styles.contentSection}>
+          <h2 style={styles.sectionTitle}>What You Access</h2>
+          
+          <div style={styles.contentGrid}>
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>📖</div>
+              <div style={styles.contentTitle}>All 144 Pages</div>
+              <div style={styles.contentDesc}>High-resolution images of the complete manuscript, authenticated and indexed</div>
+            </div>
+
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>🔤</div>
+              <div style={styles.contentTitle}>Arabic Transliteration</div>
+              <div style={styles.contentDesc}>Full Latin-letter transliteration for non-Arabic readers</div>
+            </div>
+
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>🌍</div>
+              <div style={styles.contentTitle}>English Translation</div>
+              <div style={styles.contentDesc}>Maulana Muhammad Ali's 1934 public-domain translation</div>
+            </div>
+
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>📚</div>
+              <div style={styles.contentTitle}>Scholarly Context</div>
+              <div style={styles.contentDesc}>Historical background, thematic connections, original manuscript annotations</div>
+            </div>
+
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>🔍</div>
+              <div style={styles.contentTitle}>Urdu & Persian Tafsir</div>
+              <div style={styles.contentDesc}>Original handwritten margin notes translated and contextualized</div>
+            </div>
+
+            <div style={styles.contentCard}>
+              <div style={styles.contentIcon}>💬</div>
+              <div style={styles.contentTitle}>Direct Q&A</div>
+              <div style={styles.contentDesc}>Ask questions about the text, provenance, or scholarship</div>
+            </div>
+          </div>
+        </section>
+
+        {/* ACCESS TIERS */}
+        <section style={styles.tiersSection}>
+          <h2 style={styles.sectionTitle}>Access the Manuscript</h2>
+          <p style={styles.tiersSubtitle}>Choose how you want to engage with this foundational text.</p>
+
+          <div style={styles.tiersGrid}>
+            {/* FREE TIER */}
+            <div style={styles.tierCard}>
+              <div style={styles.tierLabel}>Free Sample</div>
+              <div style={styles.tierPrice}>$0</div>
+              <div style={styles.tierDesc}>Explore the first 6 pages</div>
+              
+              <Link href="/reader/1">
+                <button style={styles.tierButton}>View Sample</button>
+              </Link>
+
+              <ul style={styles.tierFeatures}>
+                <li>✓ Pages 1-6 access</li>
+                <li>✓ Elijah Muhammad's signature page</li>
+                <li>✓ Images only</li>
+                <li>— Transcriptions & translations</li>
+                <li>— Questions</li>
+              </ul>
+            </div>
+
+            {/* MONTHLY BASIC */}
+            <div style={styles.tierCard}>
+              <div style={styles.tierLabel}>Monthly</div>
+              <div style={styles.tierPrice}>$9.99<span style={styles.tierPeriod}>/mo</span></div>
+              <div style={styles.tierDesc}>Complete access, metered questions</div>
+              
+              <Link href="/pricing">
+                <button style={styles.tierButton}>Subscribe</button>
+              </Link>
+
+              <ul style={styles.tierFeatures}>
+                <li>✓ All 144 pages</li>
+                <li>✓ Images & transcriptions</li>
+                <li>✓ Translations & annotations</li>
+                <li>✓ 5 questions/month</li>
+                <li>— Unlimited Q&A</li>
+              </ul>
+            </div>
+
+            {/* MONTHLY PRO - HIGHLIGHTED */}
+            <div 
+              style={{
+                ...styles.tierCard,
+                ...styles.tierCardHighlight,
+              }}
+              onMouseEnter={() => setHoveredTier('pro')}
+              onMouseLeave={() => setHoveredTier(null)}
+            >
+              <div style={styles.tierBadge}>Most Scholars Choose This</div>
+              <div style={styles.tierLabel}>Monthly Pro</div>
+              <div style={styles.tierPrice}>$19.99<span style={styles.tierPeriod}>/mo</span></div>
+              <div style={styles.tierDesc}>Unlimited research & direct access</div>
+              
+              <Link href="/pricing">
+                <button style={{...styles.tierButton, ...styles.tierButtonHighlight}}>Subscribe</button>
+              </Link>
+
+              <ul style={styles.tierFeatures}>
+                <li>✓ All 144 pages</li>
+                <li>✓ Complete content</li>
+                <li>✓ Unlimited Q&A questions</li>
+                <li>✓ Priority response</li>
+                <li>✓ Direct custodian access</li>
+              </ul>
+            </div>
+
+            {/* LIFETIME */}
+            <div style={styles.tierCard}>
+              <div style={styles.tierLabel}>Lifetime</div>
+              <div style={styles.tierPrice}>$299<span style={styles.tierPeriod}>once</span></div>
+              <div style={styles.tierDesc}>Permanent ownership, all updates</div>
+              
+              <Link href="/pricing">
+                <button style={styles.tierButton}>Purchase</button>
+              </Link>
+
+              <ul style={styles.tierFeatures}>
+                <li>✓ All 144 pages forever</li>
+                <li>✓ Unlimited questions & access</li>
+                <li>✓ Priority response</li>
+                <li>✓ All future updates included</li>
+                <li>✓ No renewal needed</li>
+              </ul>
+            </div>
+
+            {/* INSTITUTIONAL */}
+            <div style={styles.tierCard}>
+              <div style={styles.tierLabel}>Institution</div>
+              <div style={styles.tierPrice}>$799<span style={styles.tierPeriod}>/yr</span></div>
+              <div style={styles.tierDesc}>For universities, libraries, centers</div>
+              
+              <a href="mailto:amin@elijahs.foundation?subject=Institutional%20License%20Inquiry">
+                <button style={styles.tierButton}>Contact Sales</button>
+              </a>
+
+              <ul style={styles.tierFeatures}>
+                <li>✓ Unlimited users</li>
+                <li>✓ Site license</li>
+                <li>✓ Institutional admin panel</li>
+                <li>✓ All content & updates</li>
+                <li>✓ Direct support</li>
+              </ul>
+            </div>
+          </div>
+
           <Link href="/pricing">
-            <button style={{
-              padding: '1rem 2rem',
-              fontSize: '1rem',
-              background: '#f5f5f5',
-              color: '#8b7355',
-              border: '2px solid #8b7355',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}>
-              View Plans
-            </button>
+            <div style={styles.viewAllPlans}>View complete feature comparison →</div>
           </Link>
-        </div>
-      </section>
+        </section>
 
-      {/* ABOUT SECTION */}
-      <section style={{ marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#8b7355' }}>About This Manuscript</h2>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
-          <div>
-            <h3 style={{ color: '#8b7355', marginBottom: '1rem' }}>✓ Authentication</h3>
-            <p>
-              The opening cover bears the handwritten signature and address of Elijah Muhammad in his own hand. Not a claim—documented fact. His signature is verifiable against other authenticated samples.
-            </p>
-            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
-              Primary source documentation requiring only examination to verify.
-            </p>
+        {/* CALL TO ACTION */}
+        <section style={styles.ctaSection}>
+          <h2 style={styles.ctaTitle}>Begin Your Study</h2>
+          <p style={styles.ctaText}>Access the manuscript that shaped the spiritual discipline of a nation—authenticated by the original custodian's own hand.</p>
+          
+          <div style={styles.ctaButtons}>
+            <Link href="/reader/1">
+              <button style={styles.ctaPrimaryButton}>View Sample (Free)</button>
+            </Link>
+            <Link href="/pricing">
+              <button style={styles.ctaSecondaryButton}>Explore Plans</button>
+            </Link>
           </div>
-          
-          <div>
-            <h3 style={{ color: '#8b7355', marginBottom: '1rem' }}>The Lineage</h3>
-            <p>
-              Master Fard Muhammad → Elijah Muhammad → Nathaniel Muhammad → Amin Shabazz Muhammad
-            </p>
-            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
-              A direct chain of custody spanning nearly a century.
-            </p>
+        </section>
+
+        {/* FOOTER */}
+        <footer style={styles.footer}>
+          <div style={styles.footerContent}>
+            <p>The First Quran Given to Elijah Muhammad in North America</p>
+            <p style={{fontSize: '14px', color: '#999', marginTop: '8px'}}>© 2024 ASM Productions LLC. Custodian: Amin Shabazz Muhammad</p>
           </div>
-          
-          <div>
-            <h3 style={{ color: '#8b7355', marginBottom: '1rem' }}>The Contents</h3>
-            <p>
-              144 pages of original Quranic text with Arabic, transliteration, Maulana Muhammad Ali's 1934 English translation, and original Urdu/Persian scholarly annotations.
-            </p>
-          </div>
-          
-          <div>
-            <h3 style={{ color: '#8b7355', marginBottom: '1rem' }}>The Mission</h3>
-            <p>
-              To preserve, study, and share the foundational teachings through which Islam came to Black people in North America—authenticated by the original custodian's own hand.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES SECTION */}
-      <section style={{
-        background: '#f5f5f5',
-        padding: '2rem',
-        borderRadius: '8px',
-        marginBottom: '4rem'
-      }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#8b7355' }}>What You'll Access</h2>
-        
-        <ul style={{
-          columns: 2,
-          columnGap: '2rem',
-          listStyle: 'none'
-        }}>
-          <li style={{ marginBottom: '1rem', fontWeight: 'bold', color: '#8b7355' }}>✓ Handwritten signature authentication (Page 1)</li>
-          <li style={{ marginBottom: '1rem' }}>✓ All 144 original manuscript pages</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Maulana Muhammad Ali's translation (1934)</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Arabic transliteration (Latin letters)</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Scholarly annotations and historical context</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Urdu and Persian tafsir translations</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Direct access to ask questions</li>
-          <li style={{ marginBottom: '1rem' }}>✓ Provenance documentation and verification</li>
-        </ul>
-      </section>
-
-      {/* PLANS PREVIEW SECTION */}
-      <section style={{ marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#8b7355' }}>Plans</h2>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem'
-        }}>
-          <PlanCard
-            name="Free"
-            price="$0"
-            description="View sample pages"
-            features={[
-              'First 6 pages',
-              'Sample images',
-              'No full access'
-            ]}
-            cta="Get Started"
-            href="/reader/1"
-          />
-          
-          <PlanCard
-            name="Monthly Essentials"
-            price="$9.99"
-            period="/month"
-            description="Full access"
-            features={[
-              'All 144 pages',
-              'Transcriptions & transliterations',
-              'Translations',
-              'Scholarly annotations',
-              '5 questions/month'
-            ]}
-            cta="Choose Plan"
-            href="/pricing"
-          />
-          
-          <PlanCard
-            name="Monthly Professional"
-            price="$19.99"
-            period="/month"
-            description="Full access + Direct Q&A"
-            features={[
-              'All 144 pages',
-              'Transcriptions & transliterations',
-              'Translations',
-              'Scholarly annotations',
-              'Unlimited questions',
-              'Priority response'
-            ]}
-            cta="Choose Plan"
-            href="/pricing"
-            featured={true}
-          />
-          
-          <PlanCard
-            name="Lifetime Access"
-            price="$299"
-            period="one-time"
-            description="Permanent access"
-            features={[
-              'All 144 pages forever',
-              'All transcriptions & translations',
-              'Unlimited questions',
-              'Priority response',
-              'Future updates included',
-              'No renewal needed'
-            ]}
-            cta="Choose Plan"
-            href="/pricing"
-          />
-        </div>
-        
-        <p style={{ textAlign: 'center', marginTop: '2rem', color: '#666' }}>
-          <Link href="/pricing">
-            <span style={{ color: '#8b7355', fontWeight: 'bold', cursor: 'pointer' }}>View full plans →</span>
-          </Link>
-        </p>
-      </section>
-
-      {/* CALL TO ACTION SECTION */}
-      <section style={{
-        background: '#8b7355',
-        color: 'white',
-        padding: '3rem 2rem',
-        textAlign: 'center',
-        borderRadius: '8px',
-        marginBottom: '4rem'
-      }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Begin Your Study</h2>
-        <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>
-          Access the manuscript that shaped the spiritual discipline of a nation.
-        </p>
-        <Link href="/login">
-          <button style={{
-            padding: '1rem 2rem',
-            fontSize: '1rem',
-            background: 'white',
-            color: '#8b7355',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}>
-            Sign In or Create Account
-          </button>
-        </Link>
-      </section>
-    </div>
-  );
-}
-
-function PlanCard({ name, price, period, description, features, cta, href, featured }) {
-  return (
-    <div style={{
-      border: featured ? '2px solid #8b7355' : '1px solid #e0e0e0',
-      borderRadius: '8px',
-      padding: '2rem',
-      background: featured ? '#f5f5f5' : 'white',
-      position: 'relative',
-      transform: featured ? 'scale(1.05)' : 'scale(1)'
-    }}>
-      {featured && (
-        <div style={{
-          position: 'absolute',
-          top: '-15px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: '#8b7355',
-          color: 'white',
-          padding: '0.5rem 1rem',
-          borderRadius: '20px',
-          fontSize: '0.85rem',
-          fontWeight: 'bold'
-        }}>
-          Most Popular
-        </div>
-      )}
-      
-      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#8b7355' }}>
-        {name}
-      </h3>
-      
-      <div style={{ marginBottom: '1rem' }}>
-        <span style={{ fontSize: '2rem', fontWeight: 'bold', color: '#8b7355' }}>
-          {price}
-        </span>
-        {period && <span style={{ color: '#666' }}>{period}</span>}
+        </footer>
       </div>
-      
-      <p style={{ color: '#666', marginBottom: '1.5rem' }}>
-        {description}
-      </p>
-      
-      <ul style={{ listStyle: 'none', marginBottom: '2rem' }}>
-        {features.map((feature, i) => (
-          <li key={i} style={{ marginBottom: '0.5rem', fontSize: '0.9rem' }}>
-            ✓ {feature}
-          </li>
-        ))}
-      </ul>
-      
-      <Link href={href}>
-        <button style={{
-          width: '100%',
-          padding: '0.75rem 1rem',
-          background: featured ? '#8b7355' : '#f5f5f5',
-          color: featured ? 'white' : '#8b7355',
-          border: featured ? 'none' : '1px solid #8b7355',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontWeight: 'bold'
-        }}>
-          {cta}
-        </button>
-      </Link>
-    </div>
+    </>
   );
 }
+
+const styles = {
+  container: {
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+    backgroundColor: '#fafaf8',
+    color: '#1a1a1a',
+    lineHeight: '1.6',
+  },
+
+  // HERO
+  hero: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '60px',
+    padding: '80px 40px',
+    maxWidth: '1400px',
+    margin: '0 auto',
+    alignItems: 'center',
+  },
+  heroContent: {},
+  heroTitle: {
+    fontSize: '48px',
+    fontWeight: '700',
+    margin: '0 0 16px 0',
+    color: '#1a1a1a',
+    lineHeight: '1.2',
+  },
+  heroSubtitle: {
+    fontSize: '20px',
+    color: '#666',
+    margin: '0 0 40px 0',
+    lineHeight: '1.5',
+  },
+  heroMeta: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '30px',
+  },
+  metaItem: {
+    borderLeft: '3px solid #b8860b',
+    paddingLeft: '16px',
+  },
+  metaLabel: {
+    fontSize: '12px',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    color: '#999',
+    marginBottom: '4px',
+  },
+  metaValue: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#1a1a1a',
+  },
+
+  heroImage: {
+    textAlign: 'center',
+  },
+  manuscriptImage: {
+    maxWidth: '100%',
+    height: 'auto',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
+    borderRadius: '4px',
+  },
+  imageCaption: {
+    fontSize: '14px',
+    color: '#666',
+    marginTop: '16px',
+    fontStyle: 'italic',
+  },
+
+  // AUTH SECTION
+  authSection: {
+    backgroundColor: '#fff',
+    padding: '60px 40px',
+    borderTop: '1px solid #e5e5e5',
+    borderBottom: '1px solid #e5e5e5',
+  },
+  authContent: {
+    maxWidth: '900px',
+    margin: '0 auto',
+  },
+  authTitle: {
+    fontSize: '32px',
+    fontWeight: '600',
+    margin: '0 0 24px 0',
+    color: '#1a1a1a',
+  },
+  authText: {
+    fontSize: '16px',
+    color: '#333',
+    margin: '0 0 16px 0',
+    lineHeight: '1.8',
+  },
+
+  // SPECS
+  specsSection: {
+    padding: '80px 40px',
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+  sectionTitle: {
+    fontSize: '36px',
+    fontWeight: '600',
+    margin: '0 0 48px 0',
+    color: '#1a1a1a',
+    textAlign: 'center',
+  },
+  specsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '30px',
+  },
+  specCard: {
+    backgroundColor: '#fff',
+    padding: '32px',
+    borderRadius: '6px',
+    border: '1px solid #e5e5e5',
+  },
+  specLabel: {
+    fontSize: '12px',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    color: '#999',
+    marginBottom: '8px',
+  },
+  specValue: {
+    fontSize: '16px',
+    fontWeight: '500',
+    color: '#1a1a1a',
+  },
+
+  // LINEAGE
+  lineageSection: {
+    backgroundColor: '#fff',
+    padding: '80px 40px',
+    borderTop: '1px solid #e5e5e5',
+  },
+  lineageText: {
+    fontSize: '18px',
+    color: '#666',
+    textAlign: 'center',
+    maxWidth: '800px',
+    margin: '0 auto 60px auto',
+  },
+  lineageTimeline: {
+    maxWidth: '900px',
+    margin: '0 auto',
+  },
+  timelineItem: {
+    display: 'grid',
+    gridTemplateColumns: '80px 1fr',
+    gap: '40px',
+    marginBottom: '50px',
+    alignItems: 'start',
+  },
+  timelineMarker: {
+    width: '60px',
+    height: '60px',
+    borderRadius: '50%',
+    backgroundColor: '#b8860b',
+    color: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '24px',
+    fontWeight: '600',
+  },
+  timelineContent: {},
+  timelineDate: {
+    fontSize: '14px',
+    color: '#999',
+    marginBottom: '4px',
+  },
+  timelineName: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#1a1a1a',
+    marginBottom: '8px',
+  },
+  timelineDesc: {
+    fontSize: '16px',
+    color: '#666',
+    lineHeight: '1.6',
+  },
+
+  // CONTENT SECTION
+  contentSection: {
+    padding: '80px 40px',
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+  contentGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '30px',
+  },
+  contentCard: {
+    backgroundColor: '#fff',
+    padding: '40px 30px',
+    borderRadius: '8px',
+    border: '1px solid #e5e5e5',
+    textAlign: 'center',
+  },
+  contentIcon: {
+    fontSize: '48px',
+    marginBottom: '16px',
+  },
+  contentTitle: {
+    fontSize: '18px',
+    fontWeight: '600',
+    margin: '0 0 12px 0',
+    color: '#1a1a1a',
+  },
+  contentDesc: {
+    fontSize: '14px',
+    color: '#666',
+    margin: '0',
+  },
+
+  // TIERS
+  tiersSection: {
+    padding: '80px 40px',
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+  tiersSubtitle: {
+    fontSize: '18px',
+    color: '#666',
+    textAlign: 'center',
+    maxWidth: '800px',
+    margin: '-24px auto 60px auto',
+  },
+  tiersGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '24px',
+    marginBottom: '48px',
+  },
+  tierCard: {
+    backgroundColor: '#fff',
+    padding: '40px 32px',
+    borderRadius: '8px',
+    border: '1px solid #e5e5e5',
+    position: 'relative',
+    transition: 'all 0.3s ease',
+  },
+  tierCardHighlight: {
+    borderColor: '#b8860b',
+    borderWidth: '2px',
+    boxShadow: '0 8px 32px rgba(184, 134, 11, 0.15)',
+  },
+  tierBadge: {
+    position: 'absolute',
+    top: '-14px',
+    left: '32px',
+    backgroundColor: '#b8860b',
+    color: '#fff',
+    padding: '6px 14px',
+    borderRadius: '4px',
+    fontSize: '12px',
+    fontWeight: '600',
+    letterSpacing: '0.5px',
+  },
+  tierLabel: {
+    fontSize: '14px',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    color: '#999',
+    marginBottom: '8px',
+  },
+  tierPrice: {
+    fontSize: '42px',
+    fontWeight: '700',
+    color: '#1a1a1a',
+    margin: '8px 0 4px 0',
+  },
+  tierPeriod: {
+    fontSize: '16px',
+    fontWeight: '400',
+    color: '#666',
+  },
+  tierDesc: {
+    fontSize: '14px',
+    color: '#666',
+    marginBottom: '24px',
+  },
+  tierButton: {
+    width: '100%',
+    padding: '12px 16px',
+    backgroundColor: '#1a1a1a',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    fontSize: '14px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    marginBottom: '24px',
+    transition: 'background-color 0.2s ease',
+  },
+  tierButtonHighlight: {
+    backgroundColor: '#b8860b',
+  },
+  tierFeatures: {
+    listStyle: 'none',
+    padding: '0',
+    margin: '0',
+    fontSize: '14px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  },
+
+  viewAllPlans: {
+    textAlign: 'center',
+    fontSize: '16px',
+    color: '#b8860b',
+    cursor: 'pointer',
+    fontWeight: '600',
+    marginTop: '40px',
+  },
+
+  // CTA SECTION
+  ctaSection: {
+    backgroundColor: '#1a1a1a',
+    color: '#fff',
+    padding: '80px 40px',
+    textAlign: 'center',
+  },
+  ctaTitle: {
+    fontSize: '42px',
+    fontWeight: '700',
+    margin: '0 0 16px 0',
+    color: '#fff',
+  },
+  ctaText: {
+    fontSize: '20px',
+    color: '#ccc',
+    maxWidth: '800px',
+    margin: '0 auto 40px auto',
+    lineHeight: '1.6',
+  },
+  ctaButtons: {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  ctaPrimaryButton: {
+    padding: '14px 32px',
+    backgroundColor: '#b8860b',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    fontSize: '16px',
+    fontWeight: '600',
+    cursor: 'pointer',
+  },
+  ctaSecondaryButton: {
+    padding: '14px 32px',
+    backgroundColor: 'transparent',
+    color: '#fff',
+    border: '2px solid #fff',
+    borderRadius: '6px',
+    fontSize: '16px',
+    fontWeight: '600',
+    cursor: 'pointer',
+  },
+
+  // FOOTER
+  footer: {
+    backgroundColor: '#f5f5f5',
+    borderTop: '1px solid #e5e5e5',
+    padding: '40px',
+    textAlign: 'center',
+    fontSize: '14px',
+    color: '#666',
+  },
+  footerContent: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+};
