@@ -134,7 +134,7 @@ export default function Home() {
             </div>
 
             <div style={styles.timelineItem} className="timeline-item">
-              <div style={styles.timelineMarker} className="timeline-marker}>2</div>
+              <div style={styles.timelineMarker} className="timeline-marker">2</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>1934-1975</div>
                 <div style={styles.timelineName}>The Honorable Elijah Muhammad</div>
@@ -152,7 +152,7 @@ export default function Home() {
             </div>
 
             <div style={styles.timelineItem} className="timeline-item">
-              <div style={styles.timelineMarker} className="timeline-marker}>4</div>
+              <div style={styles.timelineMarker} className="timeline-marker">4</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>2012-Present</div>
                 <div style={styles.timelineName}>Amin Shabazz Muhammad</div>
