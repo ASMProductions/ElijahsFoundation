@@ -15,7 +15,6 @@ export default function Home() {
 
       <style>{`
         @media (max-width: 1024px) {
-          .hero { grid-template-columns: 1fr !important; padding: 60px 24px !important; gap: 40px !important; }
           .hero-title { font-size: 36px !important; }
           .hero-subtitle { font-size: 18px !important; }
           .meta-grid { gap: 20px !important; }
@@ -26,8 +25,7 @@ export default function Home() {
 
         @media (max-width: 640px) {
           body { font-size: 14px; }
-          .container { padding: 20px; }
-          .hero { padding: 40px 16px !important; gap: 20px !important; }
+          .hero { padding: 40px 16px !important; }
           .hero-title { font-size: 28px !important; line-height: 1.3 !important; }
           .hero-subtitle { font-size: 16px !important; }
           .meta-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -50,7 +48,7 @@ export default function Home() {
           .cta-buttons { flex-direction: column !important; }
           .cta-buttons button { width: 100% !important; }
           .footer { padding: 24px 16px !important; font-size: 12px !important; }
-          .manuscript-image { max-width: 100% !important; }
+          .manuscript-image { max-width: 80% !important; }
           .image-caption { font-size: 12px !important; }
           .view-all-plans { font-size: 14px !important; }
         }
@@ -58,7 +56,7 @@ export default function Home() {
 
       <div style={styles.container}>
         <section style={styles.hero} className="hero">
-          <div style={styles.heroContent}>
+          <div style={styles.heroCenter}>
             <h1 style={styles.heroTitle} className="hero-title">The First Quran Given to Elijah Muhammad</h1>
             <p style={styles.heroSubtitle} className="hero-subtitle">Authenticated by handwritten signature. A scholarly digital edition of a manuscript that shaped the spiritual discipline of a nation.</p>
             
@@ -76,11 +74,11 @@ export default function Home() {
                 <div style={styles.metaValue}>Documented</div>
               </div>
             </div>
-          </div>
 
-          <div style={styles.heroImage}>
-            <img src="/quran-pages/001.jpeg" alt="The First Quran - Opening Cover with Elijah Muhammad's Signature" style={styles.manuscriptImage} className="manuscript-image" />
-            <div style={styles.imageCaption} className="image-caption">Elijah Muhammad's handwritten signature and address, establishing direct ownership and custody of this manuscript.</div>
+            <div style={styles.manuscriptSection}>
+              <img src="/quran-pages/001.jpeg" alt="The First Quran - Opening Cover with Elijah Muhammad's Signature" style={styles.manuscriptImage} className="manuscript-image" />
+              <div style={styles.imageCaption} className="image-caption">Elijah Muhammad's handwritten signature and address, establishing direct ownership and custody of this manuscript.</div>
+            </div>
           </div>
         </section>
 
@@ -251,8 +249,6 @@ export default function Home() {
                 ...styles.tierCardHighlight,
               }}
               className="tier-card"
-              onMouseEnter={() => setHoveredTier('pro')}
-              onMouseLeave={() => setHoveredTier(null)}
             >
               <div style={styles.tierBadge}>Most Scholars Choose This</div>
               <div style={styles.tierLabel}>Monthly Pro</div>
@@ -341,16 +337,16 @@ export default function Home() {
 
 const styles = {
   container: { fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#fafaf8', color: '#1a1a1a', lineHeight: '1.6' },
-  hero: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', padding: '80px 40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'center' },
-  heroContent: {},
-  heroTitle: { fontSize: '48px', fontWeight: '700', margin: '0 0 16px 0', color: '#1a1a1a', lineHeight: '1.2' },
-  heroSubtitle: { fontSize: '20px', color: '#666', margin: '0 0 40px 0', lineHeight: '1.5' },
-  heroMeta: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' },
-  metaItem: { borderLeft: '3px solid #b8860b', paddingLeft: '16px' },
+  hero: { padding: '80px 40px', maxWidth: '1400px', margin: '0 auto' },
+  heroCenter: { textAlign: 'center' },
+  heroTitle: { fontSize: '52px', fontWeight: '700', margin: '0 0 16px 0', color: '#1a1a1a', lineHeight: '1.2' },
+  heroSubtitle: { fontSize: '20px', color: '#666', margin: '0 0 48px 0', lineHeight: '1.5', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' },
+  heroMeta: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '600px', margin: '0 auto 60px auto' },
+  metaItem: { borderLeft: '3px solid #b8860b', paddingLeft: '16px', textAlign: 'left' },
   metaLabel: { fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', color: '#999', marginBottom: '4px' },
   metaValue: { fontSize: '20px', fontWeight: '600', color: '#1a1a1a' },
-  heroImage: { textAlign: 'center' },
-  manuscriptImage: { maxWidth: '100%', height: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.15)', borderRadius: '4px' },
+  manuscriptSection: { textAlign: 'center', marginTop: '60px' },
+  manuscriptImage: { maxWidth: '350px', height: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.15)', borderRadius: '4px' },
   imageCaption: { fontSize: '14px', color: '#666', marginTop: '16px', fontStyle: 'italic' },
   authSection: { backgroundColor: '#fff', padding: '60px 40px', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5' },
   authContent: { maxWidth: '900px', margin: '0 auto' },
