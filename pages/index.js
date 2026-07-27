@@ -10,16 +10,59 @@ export default function Home() {
       <Head>
         <title>The First Quran Given to Elijah Muhammad - Scholarly Digital Edition</title>
         <meta name="description" content="Authenticated manuscript. 144 pages. Elijah Muhammad's handwritten signature. The definitive record of Islam's arrival in North America." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
+      <style>{`
+        @media (max-width: 1024px) {
+          .hero { grid-template-columns: 1fr !important; padding: 60px 24px !important; gap: 40px !important; }
+          .hero-title { font-size: 36px !important; }
+          .hero-subtitle { font-size: 18px !important; }
+          .meta-grid { gap: 20px !important; }
+          .specs-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .content-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .tiers-grid { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 640px) {
+          body { font-size: 14px; }
+          .container { padding: 20px; }
+          .hero { padding: 40px 16px !important; gap: 20px !important; }
+          .hero-title { font-size: 28px !important; line-height: 1.3 !important; }
+          .hero-subtitle { font-size: 16px !important; }
+          .meta-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .section-title { font-size: 28px !important; }
+          .auth-section { padding: 40px 16px !important; }
+          .auth-title { font-size: 24px !important; }
+          .specs-section { padding: 40px 16px !important; }
+          .specs-grid { grid-template-columns: 1fr !important; }
+          .lineage-section { padding: 40px 16px !important; }
+          .timeline-item { grid-template-columns: 50px 1fr !important; gap: 20px !important; }
+          .timeline-marker { width: 50px !important; height: 50px !important; font-size: 18px !important; }
+          .content-section { padding: 40px 16px !important; }
+          .content-grid { grid-template-columns: 1fr !important; }
+          .tiers-section { padding: 40px 16px !important; }
+          .tier-card { padding: 24px 20px !important; }
+          .tier-price { font-size: 32px !important; }
+          .cta-section { padding: 40px 16px !important; }
+          .cta-title { font-size: 28px !important; }
+          .cta-text { font-size: 16px !important; }
+          .cta-buttons { flex-direction: column !important; }
+          .cta-buttons button { width: 100% !important; }
+          .footer { padding: 24px 16px !important; font-size: 12px !important; }
+          .manuscript-image { max-width: 100% !important; }
+          .image-caption { font-size: 12px !important; }
+          .view-all-plans { font-size: 14px !important; }
+        }
+      `}</style>
+
       <div style={styles.container}>
-        {/* HERO SECTION */}
-        <section style={styles.hero}>
+        <section style={styles.hero} className="hero">
           <div style={styles.heroContent}>
-            <h1 style={styles.heroTitle}>The First Quran Given to Elijah Muhammad</h1>
-            <p style={styles.heroSubtitle}>Authenticated by handwritten signature. A scholarly digital edition of a manuscript that shaped the spiritual discipline of a nation.</p>
+            <h1 style={styles.heroTitle} className="hero-title">The First Quran Given to Elijah Muhammad</h1>
+            <p style={styles.heroSubtitle} className="hero-subtitle">Authenticated by handwritten signature. A scholarly digital edition of a manuscript that shaped the spiritual discipline of a nation.</p>
             
-            <div style={styles.heroMeta}>
+            <div style={styles.heroMeta} className="meta-grid">
               <div style={styles.metaItem}>
                 <div style={styles.metaLabel}>Pages</div>
                 <div style={styles.metaValue}>144</div>
@@ -36,29 +79,27 @@ export default function Home() {
           </div>
 
           <div style={styles.heroImage}>
-            <img src="/quran-pages/001.jpeg" alt="The First Quran - Opening Cover with Elijah Muhammad's Signature" style={styles.manuscriptImage} />
-            <div style={styles.imageCaption}>Elijah Muhammad's handwritten signature and address, establishing direct ownership and custody of this manuscript.</div>
+            <img src="/quran-pages/001.jpeg" alt="The First Quran - Opening Cover with Elijah Muhammad's Signature" style={styles.manuscriptImage} className="manuscript-image" />
+            <div style={styles.imageCaption} className="image-caption">Elijah Muhammad's handwritten signature and address, establishing direct ownership and custody of this manuscript.</div>
           </div>
         </section>
 
-        {/* AUTHENTICATION BADGE */}
-        <section style={styles.authSection}>
+        <section style={styles.authSection} className="auth-section">
           <div style={styles.authContent}>
-            <h2 style={styles.authTitle}>✓ Authenticated</h2>
+            <h2 style={styles.authTitle} className="auth-title">✓ Authenticated</h2>
             <p style={styles.authText}>
               Not a claim. Not a reproduction. The opening cover bears the <strong>handwritten signature of the Honorable Elijah Muhammad</strong> in his own hand, establishing direct ownership and custody of this Quran. His signature can be compared to other authenticated samples. His address—6116 S. Michigan Ave., Chicago—can be verified against historical records.
             </p>
-            <p style={styles.authText} style={{marginTop: '16px', fontStyle: 'italic', fontSize: '16px'}}>
+            <p style={{...styles.authText, marginTop: '16px', fontStyle: 'italic', fontSize: '16px'}}>
               "This Quran does not require belief. It requires only eyes."
             </p>
           </div>
         </section>
 
-        {/* MANUSCRIPT SPECS */}
-        <section style={styles.specsSection}>
-          <h2 style={styles.sectionTitle}>The Manuscript</h2>
+        <section style={styles.specsSection} className="specs-section">
+          <h2 style={styles.sectionTitle} className="section-title">The Manuscript</h2>
           
-          <div style={styles.specsGrid}>
+          <div style={styles.specsGrid} className="specs-grid">
             <div style={styles.specCard}>
               <div style={styles.specLabel}>Binding</div>
               <div style={styles.specValue}>Red animal skin with fur, hand-bound</div>
@@ -78,14 +119,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LINEAGE */}
-        <section style={styles.lineageSection}>
-          <h2 style={styles.sectionTitle}>Custodial Lineage</h2>
+        <section style={styles.lineageSection} className="lineage-section">
+          <h2 style={styles.sectionTitle} className="section-title">Custodial Lineage</h2>
           <p style={styles.lineageText}>A direct chain of custody spanning nearly a century:</p>
           
           <div style={styles.lineageTimeline}>
-            <div style={styles.timelineItem}>
-              <div style={styles.timelineMarker}>1</div>
+            <div style={styles.timelineItem} className="timeline-item">
+              <div style={styles.timelineMarker} className="timeline-marker">1</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>Early 1900s</div>
                 <div style={styles.timelineName}>Master Fard Muhammad</div>
@@ -93,8 +133,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={styles.timelineItem}>
-              <div style={styles.timelineMarker}>2</div>
+            <div style={styles.timelineItem} className="timeline-item">
+              <div style={styles.timelineMarker} className="timeline-marker}>2</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>1934-1975</div>
                 <div style={styles.timelineName}>The Honorable Elijah Muhammad</div>
@@ -102,8 +142,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={styles.timelineItem}>
-              <div style={styles.timelineMarker}>3</div>
+            <div style={styles.timelineItem} className="timeline-item">
+              <div style={styles.timelineMarker} className="timeline-marker">3</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>1975-2017</div>
                 <div style={styles.timelineName}>Nathaniel Muhammad</div>
@@ -111,8 +151,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={styles.timelineItem}>
-              <div style={styles.timelineMarker}>4</div>
+            <div style={styles.timelineItem} className="timeline-item">
+              <div style={styles.timelineMarker} className="timeline-marker}>4</div>
               <div style={styles.timelineContent}>
                 <div style={styles.timelineDate}>2012-Present</div>
                 <div style={styles.timelineName}>Amin Shabazz Muhammad</div>
@@ -122,11 +162,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTENT SECTION */}
-        <section style={styles.contentSection}>
-          <h2 style={styles.sectionTitle}>What You Access</h2>
+        <section style={styles.contentSection} className="content-section">
+          <h2 style={styles.sectionTitle} className="section-title">What You Access</h2>
           
-          <div style={styles.contentGrid}>
+          <div style={styles.contentGrid} className="content-grid">
             <div style={styles.contentCard}>
               <div style={styles.contentIcon}>📖</div>
               <div style={styles.contentTitle}>All 144 Pages</div>
@@ -165,16 +204,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ACCESS TIERS */}
-        <section style={styles.tiersSection}>
-          <h2 style={styles.sectionTitle}>Access the Manuscript</h2>
+        <section style={styles.tiersSection} className="tiers-section">
+          <h2 style={styles.sectionTitle} className="section-title">Access the Manuscript</h2>
           <p style={styles.tiersSubtitle}>Choose how you want to engage with this foundational text.</p>
 
-          <div style={styles.tiersGrid}>
-            {/* FREE TIER */}
-            <div style={styles.tierCard}>
+          <div style={styles.tiersGrid} className="tiers-grid">
+            <div style={styles.tierCard} className="tier-card">
               <div style={styles.tierLabel}>Free Sample</div>
-              <div style={styles.tierPrice}>$0</div>
+              <div style={styles.tierPrice} className="tier-price">$0</div>
               <div style={styles.tierDesc}>Explore the first 6 pages</div>
               
               <Link href="/reader/1">
@@ -190,10 +227,9 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* MONTHLY BASIC */}
-            <div style={styles.tierCard}>
+            <div style={styles.tierCard} className="tier-card">
               <div style={styles.tierLabel}>Monthly</div>
-              <div style={styles.tierPrice}>$9.99<span style={styles.tierPeriod}>/mo</span></div>
+              <div style={styles.tierPrice} className="tier-price">$9.99<span style={styles.tierPeriod}>/mo</span></div>
               <div style={styles.tierDesc}>Complete access, metered questions</div>
               
               <Link href="/pricing">
@@ -209,18 +245,18 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* MONTHLY PRO - HIGHLIGHTED */}
             <div 
               style={{
                 ...styles.tierCard,
                 ...styles.tierCardHighlight,
               }}
+              className="tier-card"
               onMouseEnter={() => setHoveredTier('pro')}
               onMouseLeave={() => setHoveredTier(null)}
             >
               <div style={styles.tierBadge}>Most Scholars Choose This</div>
               <div style={styles.tierLabel}>Monthly Pro</div>
-              <div style={styles.tierPrice}>$19.99<span style={styles.tierPeriod}>/mo</span></div>
+              <div style={styles.tierPrice} className="tier-price">$19.99<span style={styles.tierPeriod}>/mo</span></div>
               <div style={styles.tierDesc}>Unlimited research & direct access</div>
               
               <Link href="/pricing">
@@ -236,10 +272,9 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* LIFETIME */}
-            <div style={styles.tierCard}>
+            <div style={styles.tierCard} className="tier-card">
               <div style={styles.tierLabel}>Lifetime</div>
-              <div style={styles.tierPrice}>$299<span style={styles.tierPeriod}>once</span></div>
+              <div style={styles.tierPrice} className="tier-price">$299<span style={styles.tierPeriod}>once</span></div>
               <div style={styles.tierDesc}>Permanent ownership, all updates</div>
               
               <Link href="/pricing">
@@ -255,10 +290,9 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* INSTITUTIONAL */}
-            <div style={styles.tierCard}>
+            <div style={styles.tierCard} className="tier-card">
               <div style={styles.tierLabel}>Institution</div>
-              <div style={styles.tierPrice}>$799<span style={styles.tierPeriod}>/yr</span></div>
+              <div style={styles.tierPrice} className="tier-price">$799<span style={styles.tierPeriod}>/yr</span></div>
               <div style={styles.tierDesc}>For universities, libraries, centers</div>
               
               <a href="mailto:amin@elijahs.foundation?subject=Institutional%20License%20Inquiry">
@@ -276,16 +310,15 @@ export default function Home() {
           </div>
 
           <Link href="/pricing">
-            <div style={styles.viewAllPlans}>View complete feature comparison →</div>
+            <div style={styles.viewAllPlans} className="view-all-plans">View complete feature comparison →</div>
           </Link>
         </section>
 
-        {/* CALL TO ACTION */}
-        <section style={styles.ctaSection}>
-          <h2 style={styles.ctaTitle}>Begin Your Study</h2>
-          <p style={styles.ctaText}>Access the manuscript that shaped the spiritual discipline of a nation—authenticated by the original custodian's own hand.</p>
+        <section style={styles.ctaSection} className="cta-section">
+          <h2 style={styles.ctaTitle} className="cta-title">Begin Your Study</h2>
+          <p style={styles.ctaText} className="cta-text">Access the manuscript that shaped the spiritual discipline of a nation—authenticated by the original custodian's own hand.</p>
           
-          <div style={styles.ctaButtons}>
+          <div style={styles.ctaButtons} className="cta-buttons">
             <Link href="/reader/1">
               <button style={styles.ctaPrimaryButton}>View Sample (Free)</button>
             </Link>
@@ -295,8 +328,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer style={styles.footer}>
+        <footer style={styles.footer} className="footer">
           <div style={styles.footerContent}>
             <p>The First Quran Given to Elijah Muhammad in North America</p>
             <p style={{fontSize: '14px', color: '#999', marginTop: '8px'}}>© 2024 ASM Productions LLC. Custodian: Amin Shabazz Muhammad</p>
@@ -308,384 +340,63 @@ export default function Home() {
 }
 
 const styles = {
-  container: {
-    fontFamily: 'system-ui, -apple-system, sans-serif',
-    backgroundColor: '#fafaf8',
-    color: '#1a1a1a',
-    lineHeight: '1.6',
-  },
-
-  // HERO
-  hero: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '60px',
-    padding: '80px 40px',
-    maxWidth: '1400px',
-    margin: '0 auto',
-    alignItems: 'center',
-  },
+  container: { fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#fafaf8', color: '#1a1a1a', lineHeight: '1.6' },
+  hero: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', padding: '80px 40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'center' },
   heroContent: {},
-  heroTitle: {
-    fontSize: '48px',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    color: '#1a1a1a',
-    lineHeight: '1.2',
-  },
-  heroSubtitle: {
-    fontSize: '20px',
-    color: '#666',
-    margin: '0 0 40px 0',
-    lineHeight: '1.5',
-  },
-  heroMeta: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '30px',
-  },
-  metaItem: {
-    borderLeft: '3px solid #b8860b',
-    paddingLeft: '16px',
-  },
-  metaLabel: {
-    fontSize: '12px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    color: '#999',
-    marginBottom: '4px',
-  },
-  metaValue: {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#1a1a1a',
-  },
-
-  heroImage: {
-    textAlign: 'center',
-  },
-  manuscriptImage: {
-    maxWidth: '100%',
-    height: 'auto',
-    boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
-    borderRadius: '4px',
-  },
-  imageCaption: {
-    fontSize: '14px',
-    color: '#666',
-    marginTop: '16px',
-    fontStyle: 'italic',
-  },
-
-  // AUTH SECTION
-  authSection: {
-    backgroundColor: '#fff',
-    padding: '60px 40px',
-    borderTop: '1px solid #e5e5e5',
-    borderBottom: '1px solid #e5e5e5',
-  },
-  authContent: {
-    maxWidth: '900px',
-    margin: '0 auto',
-  },
-  authTitle: {
-    fontSize: '32px',
-    fontWeight: '600',
-    margin: '0 0 24px 0',
-    color: '#1a1a1a',
-  },
-  authText: {
-    fontSize: '16px',
-    color: '#333',
-    margin: '0 0 16px 0',
-    lineHeight: '1.8',
-  },
-
-  // SPECS
-  specsSection: {
-    padding: '80px 40px',
-    maxWidth: '1400px',
-    margin: '0 auto',
-  },
-  sectionTitle: {
-    fontSize: '36px',
-    fontWeight: '600',
-    margin: '0 0 48px 0',
-    color: '#1a1a1a',
-    textAlign: 'center',
-  },
-  specsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '30px',
-  },
-  specCard: {
-    backgroundColor: '#fff',
-    padding: '32px',
-    borderRadius: '6px',
-    border: '1px solid #e5e5e5',
-  },
-  specLabel: {
-    fontSize: '12px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    color: '#999',
-    marginBottom: '8px',
-  },
-  specValue: {
-    fontSize: '16px',
-    fontWeight: '500',
-    color: '#1a1a1a',
-  },
-
-  // LINEAGE
-  lineageSection: {
-    backgroundColor: '#fff',
-    padding: '80px 40px',
-    borderTop: '1px solid #e5e5e5',
-  },
-  lineageText: {
-    fontSize: '18px',
-    color: '#666',
-    textAlign: 'center',
-    maxWidth: '800px',
-    margin: '0 auto 60px auto',
-  },
-  lineageTimeline: {
-    maxWidth: '900px',
-    margin: '0 auto',
-  },
-  timelineItem: {
-    display: 'grid',
-    gridTemplateColumns: '80px 1fr',
-    gap: '40px',
-    marginBottom: '50px',
-    alignItems: 'start',
-  },
-  timelineMarker: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    backgroundColor: '#b8860b',
-    color: '#fff',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '24px',
-    fontWeight: '600',
-  },
+  heroTitle: { fontSize: '48px', fontWeight: '700', margin: '0 0 16px 0', color: '#1a1a1a', lineHeight: '1.2' },
+  heroSubtitle: { fontSize: '20px', color: '#666', margin: '0 0 40px 0', lineHeight: '1.5' },
+  heroMeta: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' },
+  metaItem: { borderLeft: '3px solid #b8860b', paddingLeft: '16px' },
+  metaLabel: { fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', color: '#999', marginBottom: '4px' },
+  metaValue: { fontSize: '20px', fontWeight: '600', color: '#1a1a1a' },
+  heroImage: { textAlign: 'center' },
+  manuscriptImage: { maxWidth: '100%', height: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.15)', borderRadius: '4px' },
+  imageCaption: { fontSize: '14px', color: '#666', marginTop: '16px', fontStyle: 'italic' },
+  authSection: { backgroundColor: '#fff', padding: '60px 40px', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5' },
+  authContent: { maxWidth: '900px', margin: '0 auto' },
+  authTitle: { fontSize: '32px', fontWeight: '600', margin: '0 0 24px 0', color: '#1a1a1a' },
+  authText: { fontSize: '16px', color: '#333', margin: '0 0 16px 0', lineHeight: '1.8' },
+  specsSection: { padding: '80px 40px', maxWidth: '1400px', margin: '0 auto' },
+  sectionTitle: { fontSize: '36px', fontWeight: '600', margin: '0 0 48px 0', color: '#1a1a1a', textAlign: 'center' },
+  specsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' },
+  specCard: { backgroundColor: '#fff', padding: '32px', borderRadius: '6px', border: '1px solid #e5e5e5' },
+  specLabel: { fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', color: '#999', marginBottom: '8px' },
+  specValue: { fontSize: '16px', fontWeight: '500', color: '#1a1a1a' },
+  lineageSection: { backgroundColor: '#fff', padding: '80px 40px', borderTop: '1px solid #e5e5e5' },
+  lineageText: { fontSize: '18px', color: '#666', textAlign: 'center', maxWidth: '800px', margin: '0 auto 60px auto' },
+  lineageTimeline: { maxWidth: '900px', margin: '0 auto' },
+  timelineItem: { display: 'grid', gridTemplateColumns: '80px 1fr', gap: '40px', marginBottom: '50px', alignItems: 'start' },
+  timelineMarker: { width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#b8860b', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: '600', flexShrink: 0 },
   timelineContent: {},
-  timelineDate: {
-    fontSize: '14px',
-    color: '#999',
-    marginBottom: '4px',
-  },
-  timelineName: {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#1a1a1a',
-    marginBottom: '8px',
-  },
-  timelineDesc: {
-    fontSize: '16px',
-    color: '#666',
-    lineHeight: '1.6',
-  },
-
-  // CONTENT SECTION
-  contentSection: {
-    padding: '80px 40px',
-    maxWidth: '1400px',
-    margin: '0 auto',
-  },
-  contentGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '30px',
-  },
-  contentCard: {
-    backgroundColor: '#fff',
-    padding: '40px 30px',
-    borderRadius: '8px',
-    border: '1px solid #e5e5e5',
-    textAlign: 'center',
-  },
-  contentIcon: {
-    fontSize: '48px',
-    marginBottom: '16px',
-  },
-  contentTitle: {
-    fontSize: '18px',
-    fontWeight: '600',
-    margin: '0 0 12px 0',
-    color: '#1a1a1a',
-  },
-  contentDesc: {
-    fontSize: '14px',
-    color: '#666',
-    margin: '0',
-  },
-
-  // TIERS
-  tiersSection: {
-    padding: '80px 40px',
-    maxWidth: '1400px',
-    margin: '0 auto',
-  },
-  tiersSubtitle: {
-    fontSize: '18px',
-    color: '#666',
-    textAlign: 'center',
-    maxWidth: '800px',
-    margin: '-24px auto 60px auto',
-  },
-  tiersGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '24px',
-    marginBottom: '48px',
-  },
-  tierCard: {
-    backgroundColor: '#fff',
-    padding: '40px 32px',
-    borderRadius: '8px',
-    border: '1px solid #e5e5e5',
-    position: 'relative',
-    transition: 'all 0.3s ease',
-  },
-  tierCardHighlight: {
-    borderColor: '#b8860b',
-    borderWidth: '2px',
-    boxShadow: '0 8px 32px rgba(184, 134, 11, 0.15)',
-  },
-  tierBadge: {
-    position: 'absolute',
-    top: '-14px',
-    left: '32px',
-    backgroundColor: '#b8860b',
-    color: '#fff',
-    padding: '6px 14px',
-    borderRadius: '4px',
-    fontSize: '12px',
-    fontWeight: '600',
-    letterSpacing: '0.5px',
-  },
-  tierLabel: {
-    fontSize: '14px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    color: '#999',
-    marginBottom: '8px',
-  },
-  tierPrice: {
-    fontSize: '42px',
-    fontWeight: '700',
-    color: '#1a1a1a',
-    margin: '8px 0 4px 0',
-  },
-  tierPeriod: {
-    fontSize: '16px',
-    fontWeight: '400',
-    color: '#666',
-  },
-  tierDesc: {
-    fontSize: '14px',
-    color: '#666',
-    marginBottom: '24px',
-  },
-  tierButton: {
-    width: '100%',
-    padding: '12px 16px',
-    backgroundColor: '#1a1a1a',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '6px',
-    fontSize: '14px',
-    fontWeight: '600',
-    cursor: 'pointer',
-    marginBottom: '24px',
-    transition: 'background-color 0.2s ease',
-  },
-  tierButtonHighlight: {
-    backgroundColor: '#b8860b',
-  },
-  tierFeatures: {
-    listStyle: 'none',
-    padding: '0',
-    margin: '0',
-    fontSize: '14px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-  },
-
-  viewAllPlans: {
-    textAlign: 'center',
-    fontSize: '16px',
-    color: '#b8860b',
-    cursor: 'pointer',
-    fontWeight: '600',
-    marginTop: '40px',
-  },
-
-  // CTA SECTION
-  ctaSection: {
-    backgroundColor: '#1a1a1a',
-    color: '#fff',
-    padding: '80px 40px',
-    textAlign: 'center',
-  },
-  ctaTitle: {
-    fontSize: '42px',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    color: '#fff',
-  },
-  ctaText: {
-    fontSize: '20px',
-    color: '#ccc',
-    maxWidth: '800px',
-    margin: '0 auto 40px auto',
-    lineHeight: '1.6',
-  },
-  ctaButtons: {
-    display: 'flex',
-    gap: '16px',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-  },
-  ctaPrimaryButton: {
-    padding: '14px 32px',
-    backgroundColor: '#b8860b',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '6px',
-    fontSize: '16px',
-    fontWeight: '600',
-    cursor: 'pointer',
-  },
-  ctaSecondaryButton: {
-    padding: '14px 32px',
-    backgroundColor: 'transparent',
-    color: '#fff',
-    border: '2px solid #fff',
-    borderRadius: '6px',
-    fontSize: '16px',
-    fontWeight: '600',
-    cursor: 'pointer',
-  },
-
-  // FOOTER
-  footer: {
-    backgroundColor: '#f5f5f5',
-    borderTop: '1px solid #e5e5e5',
-    padding: '40px',
-    textAlign: 'center',
-    fontSize: '14px',
-    color: '#666',
-  },
-  footerContent: {
-    maxWidth: '1400px',
-    margin: '0 auto',
-  },
+  timelineDate: { fontSize: '14px', color: '#999', marginBottom: '4px' },
+  timelineName: { fontSize: '20px', fontWeight: '600', color: '#1a1a1a', marginBottom: '8px' },
+  timelineDesc: { fontSize: '16px', color: '#666', lineHeight: '1.6' },
+  contentSection: { padding: '80px 40px', maxWidth: '1400px', margin: '0 auto' },
+  contentGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' },
+  contentCard: { backgroundColor: '#fff', padding: '40px 30px', borderRadius: '8px', border: '1px solid #e5e5e5', textAlign: 'center' },
+  contentIcon: { fontSize: '48px', marginBottom: '16px' },
+  contentTitle: { fontSize: '18px', fontWeight: '600', margin: '0 0 12px 0', color: '#1a1a1a' },
+  contentDesc: { fontSize: '14px', color: '#666', margin: '0' },
+  tiersSection: { padding: '80px 40px', maxWidth: '1400px', margin: '0 auto' },
+  tiersSubtitle: { fontSize: '18px', color: '#666', textAlign: 'center', maxWidth: '800px', margin: '-24px auto 60px auto' },
+  tiersGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' },
+  tierCard: { backgroundColor: '#fff', padding: '40px 32px', borderRadius: '8px', border: '1px solid #e5e5e5', position: 'relative', transition: 'all 0.3s ease' },
+  tierCardHighlight: { borderColor: '#b8860b', borderWidth: '2px', boxShadow: '0 8px 32px rgba(184, 134, 11, 0.15)' },
+  tierBadge: { position: 'absolute', top: '-14px', left: '32px', backgroundColor: '#b8860b', color: '#fff', padding: '6px 14px', borderRadius: '4px', fontSize: '12px', fontWeight: '600', letterSpacing: '0.5px' },
+  tierLabel: { fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px', color: '#999', marginBottom: '8px' },
+  tierPrice: { fontSize: '42px', fontWeight: '700', color: '#1a1a1a', margin: '8px 0 4px 0' },
+  tierPeriod: { fontSize: '16px', fontWeight: '400', color: '#666' },
+  tierDesc: { fontSize: '14px', color: '#666', marginBottom: '24px' },
+  tierButton: { width: '100%', padding: '12px 16px', backgroundColor: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', marginBottom: '24px', transition: 'background-color 0.2s ease' },
+  tierButtonHighlight: { backgroundColor: '#b8860b' },
+  tierFeatures: { listStyle: 'none', padding: '0', margin: '0', fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '12px' },
+  viewAllPlans: { textAlign: 'center', fontSize: '16px', color: '#b8860b', cursor: 'pointer', fontWeight: '600', marginTop: '40px' },
+  ctaSection: { backgroundColor: '#1a1a1a', color: '#fff', padding: '80px 40px', textAlign: 'center' },
+  ctaTitle: { fontSize: '42px', fontWeight: '700', margin: '0 0 16px 0', color: '#fff' },
+  ctaText: { fontSize: '20px', color: '#ccc', maxWidth: '800px', margin: '0 auto 40px auto', lineHeight: '1.6' },
+  ctaButtons: { display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' },
+  ctaPrimaryButton: { padding: '14px 32px', backgroundColor: '#b8860b', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '16px', fontWeight: '600', cursor: 'pointer' },
+  ctaSecondaryButton: { padding: '14px 32px', backgroundColor: 'transparent', color: '#fff', border: '2px solid #fff', borderRadius: '6px', fontSize: '16px', fontWeight: '600', cursor: 'pointer' },
+  footer: { backgroundColor: '#f5f5f5', borderTop: '1px solid #e5e5e5', padding: '40px', textAlign: 'center', fontSize: '14px', color: '#666' },
+  footerContent: { maxWidth: '1400px', margin: '0 auto' },
 };
