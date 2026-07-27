@@ -7,6 +7,9 @@ export default function Header() {
   return (
     <>
       <style>{`
+        button { transition: background-color 0.2s ease; }
+        button:hover { background-color: #a07b08; }
+        
         @media (max-width: 640px) {
           .nav-links { display: none; }
           .nav-links.open { 
@@ -18,18 +21,11 @@ export default function Header() {
             flex-direction: column;
             background: #fff;
             border-bottom: 1px solid #e5e5e5;
-            padding: 0;
-            gap: 0;
+            padding: 16px;
+            gap: 12px;
           }
-          .nav-link { 
-            padding: 16px 20px; 
-            border-bottom: 1px solid #e5e5e5;
-            width: 100%;
-            text-align: left;
-          }
-          .nav-link:last-child { border-bottom: none; }
+          .nav-button { width: 100%; }
           .menu-toggle { display: block; }
-          .header-container { position: relative; }
         }
         
         @media (min-width: 641px) {
@@ -39,19 +35,19 @@ export default function Header() {
       `}</style>
 
       <header style={styles.header}>
-        <div style={styles.headerContainer} className="header-container">
+        <div style={styles.headerContainer}>
           <nav style={styles.navLinks} className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             <Link href="/">
-              <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Home</div>
+              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Home</button>
             </Link>
             <Link href="/provenance">
-              <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Authentication</div>
+              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Authentication</button>
             </Link>
             <Link href="/pricing">
-              <div style={styles.navLink} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Plans</div>
+              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Plans</button>
             </Link>
             <Link href="/login">
-              <button style={styles.signInButton} onClick={() => setMobileMenuOpen(false)}>Sign In</button>
+              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Sign In</button>
             </Link>
           </nav>
 
@@ -87,31 +83,20 @@ const styles = {
   },
   navLinks: {
     display: 'flex',
-    gap: '24px',
+    gap: '12px',
     margin: 0,
     padding: 0,
     alignItems: 'center',
   },
-  navLink: {
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#666',
-    cursor: 'pointer',
-    transition: 'color 0.2s ease',
-    textDecoration: 'none',
-    paddingBottom: '2px',
-    borderBottom: '1px solid transparent',
-  },
-  signInButton: {
-    padding: '10px 24px',
-    backgroundColor: '#1a1a1a',
+  navButton: {
+    padding: '10px 20px',
+    backgroundColor: '#b8860b',
     color: '#fff',
     border: 'none',
     borderRadius: '6px',
     fontSize: '14px',
     fontWeight: '600',
     cursor: 'pointer',
-    transition: 'background-color 0.2s ease',
   },
   menuToggle: {
     display: 'none',
