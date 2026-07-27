@@ -30,6 +30,9 @@ export default function Header() {
           .nav-button { 
             width: 100%;
             text-align: left;
+            padding: 10px 16px;
+            font-size: 13px;
+            white-space: nowrap;
           }
           .menu-toggle { 
             display: block !important;
@@ -116,6 +119,7 @@ const styles = {
     fontSize: '14px',
     fontWeight: '600',
     cursor: 'pointer',
+    whiteSpace: 'nowrap',
   },
   menuToggle: {
     display: 'none',
