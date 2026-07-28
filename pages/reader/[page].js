@@ -7,7 +7,7 @@ export async function getServerSideProps({ params }) {
   if (pageNum < 1 || pageNum > 144) return { notFound: true };
   try {
     const pageData = getQuranPage(pageNum);
-    return { props: { pageData, pageNum, totalPages: 144 }, revalidate: 86400 };
+    return { props: { pageData, pageNum, totalPages: 144 } };
   } catch (error) {
     return { notFound: true };
   }
