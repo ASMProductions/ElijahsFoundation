@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -8,8 +7,15 @@ export default function Reader() {
   const { page } = router.query;
   const pageNum = parseInt(page) || 1;
   const totalPages = 144;
-  const [activeTab, setActiveTab] = useState('translation');
+  const [expandedSections, setExpandedSections] = useState({});
   const [translationVersion, setTranslationVersion] = useState('maulana');
+
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
 
   const nextPage = () => {
     if (pageNum < totalPages) {
@@ -32,12 +38,19 @@ export default function Reader() {
 
   // Mock data - replace with actual content from lib/pages-data.js
   const pageData = {
+    annotations: `[Scholarly annotations for page ${pageNum} - handwritten notes, context, references]`,
     translationMaulana: `[Maulana Muhammad Ali translation for page ${pageNum}]`,
     translationYusuf: `[Yusuf Ali translation for page ${pageNum}]`,
-    transliteration: `[Transliteration for page ${pageNum}]`,
-    annotations: `[Scholarly annotations for page ${pageNum}]`,
+    transliteration: `[Arabic transliteration for page ${pageNum}]`,
     context: `[Historical context for page ${pageNum}]`,
   };
+
+  const sections = [
+    { id: 'annotations', title: 'Annotations', icon: '📝' },
+    { id: 'translation', title: 'Translation', icon: '🌍' },
+    { id: 'transliteration', title: 'Transliteration', icon: '🔤' },
+    { id: 'context', title: 'Context', icon: '📚' },
+  ];
 
   return (
     <>
@@ -81,76 +94,57 @@ export default function Reader() {
             />
           </div>
 
-          {/* TABS */}
-          <div style={styles.tabsSection}>
-            <div style={styles.tabButtons}>
-              <button
-                style={{...styles.tabButton, ...(activeTab === 'translation' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('translation')}
-              >
-                Translation
-              </button>
-              <button
-                style={{...styles.tabButton, ...(activeTab === 'transliteration' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('transliteration')}
-              >
-                Transliteration
-              </button>
-              <button
-                style={{...styles.tabButton, ...(activeTab === 'annotations' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('annotations')}
-              >
-                Annotations
-              </button>
-              <button
-                style={{...styles.tabButton, ...(activeTab === 'context' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('context')}
-              >
-                Context
-              </button>
-            </div>
+          {/* ACCORDION SECTIONS */}
+          <div style={styles.accordionContainer}>
+            {sections.map(section => (
+              <div key={section.id} style={styles.accordionItem}>
+                <button
+                  style={styles.accordionHeader}
+                  onClick={() => toggleSection(section.id)}
+                >
+                  <span style={styles.accordionIcon}>
+                    {expandedSections[section.id] ? '▼' : '▶'}
+                  </span>
+                  <span style={styles.accordionTitle}>
+                    {section.icon} {section.title}
+                  </span>
+                </button>
 
-            {/* TAB CONTENT */}
-            <div style={styles.tabContent}>
-              {activeTab === 'translation' && (
-                <div style={styles.contentBox}>
-                  <div style={styles.translationHeader}>
-                    <h3>English Translation - Page {pageNum}</h3>
-                    <select 
-                      value={translationVersion} 
-                      onChange={(e) => setTranslationVersion(e.target.value)}
-                      style={styles.translationSelect}
-                    >
-                      <option value="maulana">Maulana Muhammad Ali (1934)</option>
-                      <option value="yusuf">Yusuf Ali (1934)</option>
-                    </select>
+                {expandedSections[section.id] && (
+                  <div style={styles.accordionContent}>
+                    {section.id === 'annotations' && (
+                      <p>{pageData.annotations}</p>
+                    )}
+                    {section.id === 'translation' && (
+                      <>
+                        <div style={styles.translationSelector}>
+                          <label>Choose translation:</label>
+                          <select 
+                            value={translationVersion} 
+                            onChange={(e) => setTranslationVersion(e.target.value)}
+                            style={styles.select}
+                          >
+                            <option value="maulana">Maulana Muhammad Ali (1934)</option>
+                            <option value="yusuf">Yusuf Ali (1934)</option>
+                          </select>
+                        </div>
+                        <p>
+                          {translationVersion === 'maulana' 
+                            ? pageData.translationMaulana 
+                            : pageData.translationYusuf}
+                        </p>
+                      </>
+                    )}
+                    {section.id === 'transliteration' && (
+                      <p>{pageData.transliteration}</p>
+                    )}
+                    {section.id === 'context' && (
+                      <p>{pageData.context}</p>
+                    )}
                   </div>
-                  <p>
-                    {translationVersion === 'maulana' 
-                      ? pageData.translationMaulana 
-                      : pageData.translationYusuf}
-                  </p>
-                </div>
-              )}
-              {activeTab === 'transliteration' && (
-                <div style={styles.contentBox}>
-                  <h3>Arabic Transliteration - Page {pageNum}</h3>
-                  <p>{pageData.transliteration}</p>
-                </div>
-              )}
-              {activeTab === 'annotations' && (
-                <div style={styles.contentBox}>
-                  <h3>Scholarly Annotations - Page {pageNum}</h3>
-                  <p>{pageData.annotations}</p>
-                </div>
-              )}
-              {activeTab === 'context' && (
-                <div style={styles.contentBox}>
-                  <h3>Historical Context - Page {pageNum}</h3>
-                  <p>{pageData.context}</p>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -206,68 +200,73 @@ const styles = {
     cursor: 'pointer',
   },
   readerContent: {
-    maxWidth: '1200px',
+    maxWidth: '1000px',
     margin: '0 auto',
     padding: '40px 20px',
   },
   imageSection: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '60px',
   },
   manuscriptImage: {
     maxWidth: '100%',
     height: 'auto',
-    maxHeight: '600px',
+    maxHeight: '700px',
     boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
     borderRadius: '4px',
   },
-  tabsSection: {
+  accordionContainer: {
     backgroundColor: '#fff',
     borderRadius: '8px',
     border: '1px solid #e5e5e5',
     overflow: 'hidden',
   },
-  tabButtons: {
-    display: 'flex',
+  accordionItem: {
     borderBottom: '1px solid #e5e5e5',
-    overflowX: 'auto',
   },
-  tabButton: {
-    flex: 1,
-    padding: '16px',
-    backgroundColor: '#f5f5f5',
+  accordionHeader: {
+    width: '100%',
+    padding: '20px',
+    backgroundColor: '#f9f9f9',
     border: 'none',
-    borderRight: '1px solid #e5e5e5',
-    fontSize: '14px',
-    fontWeight: '600',
-    color: '#666',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    whiteSpace: 'nowrap',
-  },
-  tabButtonActive: {
-    backgroundColor: '#b8860b',
-    color: '#fff',
-  },
-  tabContent: {
-    padding: '40px',
-    minHeight: '300px',
-    lineHeight: '1.8',
-  },
-  contentBox: {
-    maxWidth: '800px',
-  },
-  translationHeader: {
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '24px',
+    gap: '12px',
+    cursor: 'pointer',
+    transition: 'background-color 0.2s ease',
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#1a1a1a',
   },
-  translationSelect: {
+  accordionHeaderHover: {
+    backgroundColor: '#f0f0f0',
+  },
+  accordionIcon: {
+    fontSize: '12px',
+    color: '#b8860b',
+  },
+  accordionTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  accordionContent: {
+    padding: '24px 20px',
+    backgroundColor: '#fff',
+    lineHeight: '1.8',
+    color: '#333',
+  },
+  translationSelector: {
+    marginBottom: '24px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  select: {
     padding: '8px 12px',
     border: '1px solid #e5e5e5',
     borderRadius: '6px',
-    fontSize: '13px',
+    fontSize: '14px',
     cursor: 'pointer',
     backgroundColor: '#fff',
   },
