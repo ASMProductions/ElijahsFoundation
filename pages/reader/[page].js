@@ -28,6 +28,34 @@ export default function ReaderPage({ pageData, pageNum, totalPages }) {
           margin: 0 auto;
           padding: 20px;
         }
+        .reader-nav {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 30px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .reader-nav button, .reader-nav input {
+          padding: 10px 15px;
+          font-size: 14px;
+          border-radius: 4px;
+          border: 1px solid #b8860b;
+          background: white;
+          color: #b8860b;
+          cursor: pointer;
+        }
+        .reader-nav button:hover:not(:disabled) {
+          background: #b8860b;
+          color: white;
+        }
+        .reader-nav button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        .reader-nav input {
+          width: 60px;
+          text-align: center;
+        }
         .reader-image {
           width: 100%;
           max-width: 500px;
@@ -61,36 +89,15 @@ export default function ReaderPage({ pageData, pageNum, totalPages }) {
           margin: 12px 0 0 0;
           line-height: 1.6;
         }
-        nav {
-          display: flex;
-          gap: 10px;
-          margin-top: 30px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        nav button, nav input {
-          padding: 10px 15px;
-          font-size: 14px;
-          border-radius: 4px;
-          border: 1px solid #b8860b;
-          background: white;
-          color: #b8860b;
-          cursor: pointer;
-        }
-        nav button:hover:not(:disabled) {
-          background: #b8860b;
-          color: white;
-        }
-        nav button:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        nav input {
-          width: 60px;
-          text-align: center;
-        }
       `}</style>
       
+      <nav className="reader-nav">
+        <button onClick={() => router.push(`/reader/${pageNum - 1}`)} disabled={pageNum <= 1}>← Previous</button>
+        <input type="number" min="1" max="144" value={pageNum} onChange={(e) => router.push(`/reader/${e.target.value}`)} />
+        <span style={{padding: '10px'}}>of {totalPages}</span>
+        <button onClick={() => router.push(`/reader/${pageNum + 1}`)} disabled={pageNum >= 144}>Next →</button>
+      </nav>
+
       <h1>{pageData.title}</h1>
       {pageData.verses && <p><strong>{pageData.verses}</strong></p>}
       
@@ -122,13 +129,6 @@ export default function ReaderPage({ pageData, pageNum, totalPages }) {
           </details>
         )}
       </div>
-      
-      <nav>
-        <button onClick={() => router.push(`/reader/${pageNum - 1}`)} disabled={pageNum <= 1}>← Previous</button>
-        <input type="number" min="1" max="144" value={pageNum} onChange={(e) => router.push(`/reader/${e.target.value}`)} />
-        <span style={{padding: '10px'}}>of {totalPages}</span>
-        <button onClick={() => router.push(`/reader/${pageNum + 1}`)} disabled={pageNum >= 144}>Next →</button>
-      </nav>
     </div>
   );
 }
