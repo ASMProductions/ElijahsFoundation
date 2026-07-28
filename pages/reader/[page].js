@@ -8,7 +8,8 @@ export default function Reader() {
   const { page } = router.query;
   const pageNum = parseInt(page) || 1;
   const totalPages = 144;
-  const [activeTab, setActiveTab] = useState('image');
+  const [activeTab, setActiveTab] = useState('translation');
+  const [translationVersion, setTranslationVersion] = useState('maulana');
 
   const nextPage = () => {
     if (pageNum < totalPages) {
@@ -31,8 +32,9 @@ export default function Reader() {
 
   // Mock data - replace with actual content from lib/pages-data.js
   const pageData = {
+    translationMaulana: `[Maulana Muhammad Ali translation for page ${pageNum}]`,
+    translationYusuf: `[Yusuf Ali translation for page ${pageNum}]`,
     transliteration: `[Transliteration for page ${pageNum}]`,
-    translation: `[English translation for page ${pageNum}]`,
     annotations: `[Scholarly annotations for page ${pageNum}]`,
     context: `[Historical context for page ${pageNum}]`,
   };
@@ -83,22 +85,16 @@ export default function Reader() {
           <div style={styles.tabsSection}>
             <div style={styles.tabButtons}>
               <button
-                style={{...styles.tabButton, ...(activeTab === 'image' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('image')}
+                style={{...styles.tabButton, ...(activeTab === 'translation' ? styles.tabButtonActive : {})}}
+                onClick={() => setActiveTab('translation')}
               >
-                Image
+                Translation
               </button>
               <button
                 style={{...styles.tabButton, ...(activeTab === 'transliteration' ? styles.tabButtonActive : {})}}
                 onClick={() => setActiveTab('transliteration')}
               >
                 Transliteration
-              </button>
-              <button
-                style={{...styles.tabButton, ...(activeTab === 'translation' ? styles.tabButtonActive : {})}}
-                onClick={() => setActiveTab('translation')}
-              >
-                Translation
               </button>
               <button
                 style={{...styles.tabButton, ...(activeTab === 'annotations' ? styles.tabButtonActive : {})}}
@@ -116,16 +112,30 @@ export default function Reader() {
 
             {/* TAB CONTENT */}
             <div style={styles.tabContent}>
-              {activeTab === 'transliteration' && (
-                <div style={styles.contentBox}>
-                  <h3>Transliteration - Page {pageNum}</h3>
-                  <p>{pageData.transliteration}</p>
-                </div>
-              )}
               {activeTab === 'translation' && (
                 <div style={styles.contentBox}>
-                  <h3>English Translation - Page {pageNum}</h3>
-                  <p>{pageData.translation}</p>
+                  <div style={styles.translationHeader}>
+                    <h3>English Translation - Page {pageNum}</h3>
+                    <select 
+                      value={translationVersion} 
+                      onChange={(e) => setTranslationVersion(e.target.value)}
+                      style={styles.translationSelect}
+                    >
+                      <option value="maulana">Maulana Muhammad Ali (1934)</option>
+                      <option value="yusuf">Yusuf Ali (1934)</option>
+                    </select>
+                  </div>
+                  <p>
+                    {translationVersion === 'maulana' 
+                      ? pageData.translationMaulana 
+                      : pageData.translationYusuf}
+                  </p>
+                </div>
+              )}
+              {activeTab === 'transliteration' && (
+                <div style={styles.contentBox}>
+                  <h3>Arabic Transliteration - Page {pageNum}</h3>
+                  <p>{pageData.transliteration}</p>
                 </div>
               )}
               {activeTab === 'annotations' && (
@@ -246,5 +256,19 @@ const styles = {
   },
   contentBox: {
     maxWidth: '800px',
+  },
+  translationHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '24px',
+  },
+  translationSelect: {
+    padding: '8px 12px',
+    border: '1px solid #e5e5e5',
+    borderRadius: '6px',
+    fontSize: '13px',
+    cursor: 'pointer',
+    backgroundColor: '#fff',
   },
 };
