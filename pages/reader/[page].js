@@ -110,22 +110,18 @@ export default function ReaderPage({ pageData, pageNum, totalPages }) {
           <summary>Annotations</summary>
           <p>{pageData.annotations}</p>
         </details>
-        <details open>
-          <summary>{pageData.surah ? 'Translations' : 'Content'}</summary>
-          {pageData.surah && (
-            <select value={translation} onChange={(e) => setTranslation(e.target.value)}>
-              <option value="maulana">Maulana Muhammad Ali 1934</option>
-              <option value="yusuf">Yusuf Ali 1934</option>
-            </select>
-          )}
+        <details>
+          <summary>Translations</summary>
+          <select value={translation} onChange={(e) => setTranslation(e.target.value)}>
+            <option value="maulana">Maulana Muhammad Ali 1934</option>
+            <option value="yusuf">Yusuf Ali 1934</option>
+          </select>
           <p>{translation === "maulana" ? pageData.translationMaulana : pageData.translationYusuf}</p>
         </details>
-        {pageData.surah && (
-          <details>
-            <summary>Transliteration</summary>
-            <p>{pageData.transliteration}</p>
-          </details>
-        )}
+        <details>
+          <summary>Transliteration</summary>
+          <p>{pageData.transliteration}</p>
+        </details>
         {pageData.context && (
           <details>
             <summary>Context</summary>
