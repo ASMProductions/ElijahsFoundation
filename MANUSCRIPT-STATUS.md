@@ -79,8 +79,9 @@ square — likely a re-shoot. TIFF folder holds 145 files against 144 JPEGs.
 
 ## Data state
 - Pages 5–117: cleared of false Juz 1 labels — commit `373e488`
-- Pages 118–144: **VERIFY** whether Al-Baqarah labels were cleared. Confirmed
-  content there is Al-Muzzammil into Al-Fajr, not Al-Baqarah.
+- Pages 118–144: cleared of false Al-Baqarah labels. Arabic and
+  transliteration fields preserved. Confirmed content is Al-Muzzammil
+  into Al-Fajr.
 
 ## Next
 Find the **eleven surah boundaries** — not verse-by-verse transcription.
