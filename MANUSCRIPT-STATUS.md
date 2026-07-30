@@ -139,3 +139,13 @@ ranges contradict its own anchors in places. Do not treat it as established.
 Verse-level attribution belongs in the planned Scholar Commentary feature —
 contributed by people who read Urdu and Persian from the manuscript itself.
 The site can truthfully say "Sūrat al-Muzzammil, manuscript page ۱۱۸" now.
+
+## Local snapshots
+Pre-change backups of touched files live in `.snapshots/<timestamp>-<label>/`
+(gitignored, local only). Each folder has a RESTORE.md and the git commit it
+was taken from. Not in the repo — check the local Mac working tree.
+
+## Local snapshots
+Pre-change backups of touched files live in `.snapshots/<timestamp>-<label>/`
+(gitignored, local only). Each folder has a RESTORE.md and the git commit it
+was taken from. Not in the repo — check the local Mac working tree.

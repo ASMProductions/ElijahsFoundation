@@ -9,12 +9,12 @@ export default function Header() {
       <style>{`
         button { transition: background-color 0.2s ease; }
         button:hover { background-color: #a07b08; }
-        
+
         @media (max-width: 768px) {
-          .nav-links { 
+          .nav-links {
             display: none !important;
           }
-          .nav-links.open { 
+          .nav-links.open {
             display: flex !important;
             position: absolute;
             top: 64px;
@@ -27,14 +27,14 @@ export default function Header() {
             gap: 12px;
             z-index: 99;
           }
-          .nav-button { 
+          .nav-button {
             width: 100%;
             text-align: left;
             padding: 10px 16px;
             font-size: 13px;
             white-space: nowrap;
           }
-          .menu-toggle { 
+          .menu-toggle {
             display: block !important;
           }
           .header-container {
@@ -42,12 +42,12 @@ export default function Header() {
             padding: 12px 16px;
           }
         }
-        
+
         @media (min-width: 769px) {
-          .menu-toggle { 
+          .menu-toggle {
             display: none !important;
           }
-          .nav-links { 
+          .nav-links {
             display: flex !important;
           }
           .header-container {
@@ -63,14 +63,8 @@ export default function Header() {
             <Link href="/">
               <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Home</button>
             </Link>
-            <Link href="/provenance">
-              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Authentication</button>
-            </Link>
-            <Link href="/pricing">
-              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Plans</button>
-            </Link>
-            <Link href="/login">
-              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Sign In</button>
+            <Link href="/reader/2">
+              <button style={styles.navButton} className="nav-button" onClick={() => setMobileMenuOpen(false)}>Read</button>
             </Link>
           </nav>
 
